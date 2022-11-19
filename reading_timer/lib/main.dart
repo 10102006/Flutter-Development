@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reading_timer/pages/home_page.dart';
+import 'session_data.dart';
 
 void main() => runApp(const MyApp());
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         // Define the default brightness and colors.
         brightness: Brightness.dark,
-        primaryColor: Colors.lightBlue[800],
+        primaryColor: primaryColor,
 
         // Define the default font family.
         fontFamily: 'Georgia',

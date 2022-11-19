@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
 String bookName = '';
-Color scheme = Color(00000);
+Color primaryColor = const Color.fromARGB(255, 4, 125, 195);
 // ThemeData sessionTheme;

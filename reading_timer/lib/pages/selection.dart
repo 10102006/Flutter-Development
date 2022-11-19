@@ -31,7 +31,7 @@ class _SelectionState extends State<Selection> {
         setState(
           () {
             bookName = _textController.text;
-            scheme = btnColor;
+            primaryColor = btnColor;
             Navigator.push(
               context,
               RouteAnimator(1),

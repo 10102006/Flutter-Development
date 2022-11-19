@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:reading_timer/session_data.dart';
@@ -54,20 +55,21 @@ class _TimerState extends State<Counter> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             SizedBox(
-              height: 200,
-              width: 200,
+              height: 360,
+              width: 360,
               child: Stack(
                 fit: StackFit.expand,
                 children: [
                   CircularProgressIndicator(
+                    // TODO: change to minutes
                     value: ((duration.inSeconds) % 60) / 60,
-                    backgroundColor: Color.fromARGB(113, 197, 207, 212),
+                    backgroundColor: const Color.fromARGB(113, 197, 207, 212),
                     strokeWidth: 14,
-                    color: scheme,
+                    color: primaryColor,
                   ),
                   Center(
-                    child: Text('${minutes}:${seconds}',
-                        style: const TextStyle(fontSize: 25)),
+                    child: Text('$minutes:$seconds',
+                        style: const TextStyle(fontSize: 35)),
                   ),
                 ],
               ),
@@ -79,10 +81,26 @@ class _TimerState extends State<Counter> {
               indent: 20,
               endIndent: 20,
             ),
-            IconButton(
-              onPressed: pauseSwitch,
-              icon: Icon(timer!.isActive ? Icons.pause : Icons.play_arrow),
-              iconSize: 25,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                IconButton(
+                  onPressed: pauseSwitch,
+                  icon: Icon(timer!.isActive ? Icons.pause : Icons.play_arrow),
+                  highlightColor: const Color.fromARGB(113, 197, 207, 212),
+                  iconSize: 40,
+                ),
+                CupertinoButton(
+                  color: primaryColor,
+                  onPressed: () {},
+                  child: const Text(
+                    'Done',
+                    style: TextStyle(
+                      fontSize: 26,
+                    ),
+                  ),
+                )
+              ],
             )
           ],
         ),

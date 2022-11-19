@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:reading_timer/pages/counter.dart';
 
@@ -13,11 +14,11 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: ElevatedButton(
+        child: CupertinoButton.filled(
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const Counter()),
+              _counterRoute(),
             );
           },
           child: const Text(
@@ -30,4 +31,27 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+}
+
+Route _counterRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => const Counter(),
+    transitionsBuilder: (
+      context,
+      animation,
+      secondaryAnimation,
+      child,
+    ) {
+      const begin = Offset(1.0, 0.0);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
 }

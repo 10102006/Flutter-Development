@@ -1,5 +1,6 @@
 // ignore_for_file: unused_local_variable
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -23,13 +24,15 @@ class _TimerState extends State<Counter> {
   }
 
   void pauseSwitch() {
-    isRunning = timer == null ? false : (timer!.isActive);
+    setState(() {
+      isRunning = timer == null ? false : (timer!.isActive);
 
-    if (isRunning) {
-      timer?.cancel();
-    } else {
-      startTimer();
-    }
+      if (isRunning) {
+        timer?.cancel();
+      } else {
+        startTimer();
+      }
+    });
   }
 
   void addSecond() {
@@ -48,32 +51,42 @@ class _TimerState extends State<Counter> {
     String seconds = twoDigits(duration.inSeconds.remainder(60));
 
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          SizedBox(
-            height: 200,
-            width: 200,
-            child: Stack(
-              fit: StackFit.expand,
-              children: [
-                CircularProgressIndicator(
-                  value: ((duration.inSeconds) % 60) / 60,
-                  strokeWidth: 18,
-                ),
-                Center(
-                  child: Text('${minutes}:${seconds}',
-                      style: const TextStyle(fontSize: 25)),
-                ),
-              ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            SizedBox(
+              height: 200,
+              width: 200,
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  CircularProgressIndicator(
+                    value: ((duration.inSeconds) % 60) / 60,
+                    backgroundColor: Color.fromARGB(113, 197, 207, 212),
+                    strokeWidth: 14,
+                  ),
+                  Center(
+                    child: Text('${minutes}:${seconds}',
+                        style: const TextStyle(fontSize: 25)),
+                  ),
+                ],
+              ),
             ),
-          ),
-          IconButton(
-            onPressed: pauseSwitch,
-            icon: Icon(Icons.pause),
-            iconSize: 25,
-          )
-        ],
+            const Divider(
+              color: Colors.grey,
+              height: 15,
+              thickness: 1.3,
+              indent: 20,
+              endIndent: 20,
+            ),
+            IconButton(
+              onPressed: pauseSwitch,
+              icon: Icon(timer!.isActive ? Icons.pause : Icons.play_arrow),
+              iconSize: 25,
+            )
+          ],
+        ),
       ),
     );
   }

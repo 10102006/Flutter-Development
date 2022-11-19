@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:reading_timer/pages/counter.dart';
+import 'package:reading_timer/anim.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
           onPressed: () {
             Navigator.push(
               context,
-              _counterRoute(),
+              RouteAnimator(0),
             );
           },
           child: const Text(
@@ -31,27 +31,4 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-}
-
-Route _counterRoute() {
-  return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => const Counter(),
-    transitionsBuilder: (
-      context,
-      animation,
-      secondaryAnimation,
-      child,
-    ) {
-      const begin = Offset(1.0, 0.0);
-      const end = Offset.zero;
-      const curve = Curves.ease;
-
-      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-
-      return SlideTransition(
-        position: animation.drive(tween),
-        child: child,
-      );
-    },
-  );
 }

@@ -1,8 +1,6 @@
-// ignore_for_file: unused_local_variable
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'package:reading_timer/session_data.dart';
 
 class Counter extends StatefulWidget {
   const Counter({super.key});
@@ -65,6 +63,7 @@ class _TimerState extends State<Counter> {
                     value: ((duration.inSeconds) % 60) / 60,
                     backgroundColor: Color.fromARGB(113, 197, 207, 212),
                     strokeWidth: 14,
+                    color: scheme,
                   ),
                   Center(
                     child: Text('${minutes}:${seconds}',

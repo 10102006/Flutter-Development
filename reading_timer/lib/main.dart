@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         primaryColor: primaryColor,
 
         // Define the default font family.
-        fontFamily: 'Georgia',
+        fontFamily: 'Fira Code',
 
         // Define the default `TextTheme`. Use this to specify the default
         // text styling for headlines, titles, bodies of text, and more.
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
         ),
       ),
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }

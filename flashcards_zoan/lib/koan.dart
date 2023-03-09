@@ -1,5 +1,4 @@
 class Koan {
-  // final String title;
   final String koan;
   final String meaning;
   bool liked = false;

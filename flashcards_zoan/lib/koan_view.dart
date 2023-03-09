@@ -5,23 +5,14 @@ import 'package:flip_card/flip_card.dart';
 import 'package:flashcards_zoan/koan.dart';
 
 
-class KoanFlashCard extends StatelessWidget {
-  final Koan koan = koans[currentIndex];
-  KoanFlashCard({Key? key, required Koan koan}) : super(key: key);
+
+class KoanFlipCard extends StatelessWidget {
+  final Koan koan;
+
+  KoanFlipCard({Key? key, required this.koan}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: BoxConstraints(
-        maxWidth: 350,
-        minWidth: 350,
-        minHeight: 350,
-      ),
-      child: flipCard(),
-    );
-  }
-
-  Widget flipCard() {
     return FlipCard(
       front: Card(
         elevation: 4,

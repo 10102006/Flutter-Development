@@ -18,6 +18,7 @@ final List<Task> tasks = <Task>[
   Task("Garden"),
   Task("Sleep"),
 ];
+
 final List<Task> completedTasks = <Task>[];
 
 void completeTask(task) {

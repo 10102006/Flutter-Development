@@ -78,7 +78,7 @@ class TaskView extends State<TaskDisplay> {
             onPressed: () {
               setState(() {
                 _currentTask.setCompleted(!_currentTask.isCompleted());
-                completeTasks();
+                completeTask(_currentTask);
               });
             },
             icon: Icon(

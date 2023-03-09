@@ -17,15 +17,12 @@ final List<Task> tasks = <Task>[
   Task("Homework"),
   Task("Garden"),
   Task("Sleep"),
-
 ];
 final List<Task> completedTasks = <Task>[];
 
-void completeTasks() {
-  for (Task task in tasks) {
-    if (task.isCompleted()) {
-      completedTasks.add(task);
-      tasks.remove(task);
-    }
+void completeTask(task) {
+  if (task.isCompleted()) {
+    completedTasks.add(task);
+    tasks.remove(task);
   }
 }
